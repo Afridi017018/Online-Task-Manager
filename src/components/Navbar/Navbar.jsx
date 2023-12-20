@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-// import useAuth from '../../hooks/useAuth';
+import { AuthContext } from '../../providers/AuthProvider';
+
 
 
 
 const NavBar = () => {
 
+    const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate()
 
     const theme = false
-const user = null;
     const handleLogOut = async () => {
         await logOut();
     }
@@ -56,7 +57,7 @@ const user = null;
                 Contact Us
             </NavLink>
         </li>
-        
+
         {/* <li>
             <NavLink
                 to="/add-blog"
@@ -67,8 +68,8 @@ const user = null;
                 Add Blog
             </NavLink>
         </li> */}
-        
-        
+
+
         {
             user === null &&
             <>
@@ -159,11 +160,11 @@ const user = null;
                         {links}
 
                     </ul>
-                 
+
                 </div>
                 <div className="navbar-end">
 
-                 
+
                     <ul className="px-1">
                         {
                             user === null &&

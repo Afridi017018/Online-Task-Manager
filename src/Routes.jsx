@@ -2,7 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Blogs from "./pages/Blogs/Blogs";
 import ContactUs from "./pages/ContactUs/ContactUs";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 // import AddBlog from "./pages/AddBlog/AddBlog";
 // import AllBlogs from "./pages/AllBlogs/AllBlogs";
 // import BlogDetails from "./pages/BlogDetails/BlogDetails";
@@ -20,7 +23,7 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
-        // errorElement: <ErrorPage />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "/",
@@ -59,14 +62,14 @@ export const router = createBrowserRouter([
             //     path: "/update-blog/:id",
             //     element: <PrivateRoute><UpdateBlog /></PrivateRoute>,
             // },
-            // {
-            //     path: "/login",
-            //     element: <PublicRoute><Login/></PublicRoute>,
-            // },
-            // {
-            //     path: "/register",
-            //     element: <PublicRoute><Register/></PublicRoute>,
-            // },
+            {
+                path: "/login",
+                element: <Login />,
+            },
+            {
+                path: "/register",
+                element: <Register />,
+            },
 
         ],
     },
