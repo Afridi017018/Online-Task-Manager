@@ -3,8 +3,8 @@ import React from 'react';
 const Banner = () => {
     return (
         <div>
-            <div className="hero min-h-[558px]" style={{ backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)' }}>
-                <div className="hero-overlay bg-opacity-60"></div>
+            <div className="hero min-h-[558px]" style={{ backgroundImage: 'url(https://img.freepik.com/free-vector/people-calendar-time-management-concept_23-2148822826.jpg?w=740&t=st=1703089931~exp=1703090531~hmac=de1369c49c7ae0610632fdd6f3f3ac5c912d68c32d6156a33ef9e637420944bf)' }}>
+                <div className="hero-overlay bg-opacity-80"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
                         <h1 className="mb-5 text-5xl font-bold">Task Manager</h1>

@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
+import Blogs from "./pages/Blogs/Blogs";
 import Home from "./pages/Home/Home";
 // import AddBlog from "./pages/AddBlog/AddBlog";
 // import AllBlogs from "./pages/AllBlogs/AllBlogs";
@@ -24,6 +25,11 @@ export const router = createBrowserRouter([
                 path: "/",
                 element: <Home />,
             },
+            {
+                path: "/blogs",
+                loader: () => fetch('/fakeBlogData.json'),
+                element: <Blogs/>,
+              },
             // {
             //     path: "/all-blogs",
             //     element: <AllBlogs />,
