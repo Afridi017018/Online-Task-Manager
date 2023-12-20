@@ -9,7 +9,7 @@ const NavBar = () => {
     const navigate = useNavigate()
 
     const theme = false
-const user =true;
+const user = null;
     const handleLogOut = async () => {
         await logOut();
     }
@@ -24,6 +24,16 @@ const user =true;
                 }
             >
                 Home
+            </NavLink>
+        </li>
+        <li>
+            <NavLink
+                to="/dashboard"
+                className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-green-800 font-bold underline underline-offset-4" : ""
+                }
+            >
+                Dashboard
             </NavLink>
         </li>
         <li>
@@ -46,16 +56,7 @@ const user =true;
                 Contact Us
             </NavLink>
         </li>
-        <li>
-            <NavLink
-                to="/dashboard"
-                className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-green-800 font-bold underline underline-offset-4" : ""
-                }
-            >
-                Dashboard
-            </NavLink>
-        </li>
+        
         {/* <li>
             <NavLink
                 to="/add-blog"
