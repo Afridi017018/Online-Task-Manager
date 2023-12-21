@@ -61,7 +61,7 @@ const AllTasks = () => {
                 <AddTask allTasks={allTasks} />
             </div>
 
-            <div>
+            <div className='my-10'>
                 <Tasks tasks={tasks} todo={todo} ongoing={ongoing} completed={completed} allTasks={allTasks} />
             </div>
 
