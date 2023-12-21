@@ -3,67 +3,122 @@ import Task from '../Task/Task';
 import { useDrop } from "react-dnd";
 
 
-const Tasks = ({tasks, todo, ongoing, completed, allTasks}) => {
+const Tasks = ({ tasks, todo, ongoing, completed, allTasks }) => {
 
-    
+
     const [{ isOver: isOngoingOver }, addToOngoingRef] = useDrop({
         accept: ["todo", "ongoing", "completed"],
         collect: (monitor) => ({ isOver: !!monitor.isOver() }),
-      });
+    });
 
-      const [{ isOver: isTodoOver }, addToTodoRef] = useDrop({
+    const [{ isOver: isTodoOver }, addToTodoRef] = useDrop({
         accept: ["todo", "ongoing", "completed"],
         collect: (monitor) => ({ isOver: !!monitor.isOver() }),
-      });
+    });
 
-      const addToOngoing = (item) => {
-        console.log(item);
-        // setPlayer((prev) => prev.filter((_, i) => item.index !== i));
-        // setTeam((prev) => [...prev, item]);
-      };
-      const addToTodo= (item) => {
-        console.log(item);
-        // setPlayer((prev) => prev.filter((_, i) => item.index !== i));
-        // setTeam((prev) => [...prev, item]);
-      };
+    const [{ isOver: isCompletedOver }, addToCompletedRef] = useDrop({
+        accept: ["todo", "ongoing", "completed"],
+        collect: (monitor) => ({ isOver: !!monitor.isOver() }),
+    });
+
+
+    const addToTodo = async (item) => {
+
+        const response = await fetch('http://localhost:4000/update-task-status', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id: item._id, status: "todo" }),
+        });
+
+        const result = await response.json();
+        // console.log(result);
+        allTasks();
+
+    };
+    const addToOngoing = async (item) => {
+        const response = await fetch('http://localhost:4000/update-task-status', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id: item._id, status: "ongoing" }),
+        });
+
+        const result = await response.json();
+        // console.log(result);
+        allTasks();
+    };
+
+
+    const addToCompleted = async (item) => {
+        const response = await fetch('http://localhost:4000/update-task-status', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id: item._id, status: "completed" }),
+        });
+
+        const result = await response.json();
+        // console.log(result);
+        allTasks();
+    };
+
+
     return (
         <div className='grid grid-cols-3 px-3 gap-2'>
             <div className='mx-auto border border-red-700 w-full' ref={addToTodoRef}>
-                <h3 className='text-xl font-bold text-center text-white bg-red-700 py-2'>Todo</h3>
+                <h3 className={`text-xl font-bold text-white ${isTodoOver ? "bg-black" : "bg-red-700"} py-2 text-center`}>Todo</h3>
                 {
                     todo.length > 0 ?
-                    todo.map((element, i) => (
-                        <Task
-                            key={element._id}
-                            element={element}
-                            taskType={element.status}
-                            onDrop={addToTodo}
-                            index={i}
-                        />
-                    ))
-                    :
-                    <p className='text-gray-500 font-bold text-center my-5'>Empty List</p>
+                        todo.map((element, i) => (
+                            <Task
+                                key={element._id}
+                                element={element}
+                                taskType={element.status}
+                                onDrop={isOngoingOver ? addToOngoing : isCompletedOver ? addToCompleted : addToTodo}
+                                index={i}
+                            />
+                        ))
+                        :
+                        <p className='text-gray-500 font-bold text-center my-5'>Empty List</p>
                 }
             </div>
             <div className='mx-auto border border-green-700 w-full' ref={addToOngoingRef}>
-                <h3 className='text-xl font-bold text-center text-white bg-green-700 py-2'>Ongoing</h3>
+                <h3 className={`text-xl font-bold text-white ${isOngoingOver ? "bg-black" : "bg-green-700"} py-2 text-center`}>Ongoing</h3>
                 {
                     ongoing.length > 0 ?
-                    ongoing.map((element, i) => (
-                        <Task
-                            key={element._id}
-                            element={element}
-                            taskType={element.status}
-                            onDrop={addToOngoing}
-                            index={i}
-                        />
-                    ))
-                    :
-                    <p className='text-gray-500 font-bold text-center my-5'>Empty List</p>
+                        ongoing.map((element, i) => (
+                            <Task
+                                key={element._id}
+                                element={element}
+                                taskType={element.status}
+                                onDrop={isCompletedOver ? addToCompleted : isOngoingOver ? addToOngoing : addToTodo}
+                                index={i}
+                            />
+                        ))
+                        :
+                        <p className='text-gray-500 font-bold text-center my-5'>Empty List</p>
                 }
             </div>
-            <div className='mx-auto border border-orange-600 w-full text-center'>
-                <h3 className='text-xl font-bold text-white bg-orange-600 py-2'>Completed</h3>
+            <div className='mx-auto border border-orange-600 w-full' ref={addToCompletedRef}>
+                <h3 className={`text-xl font-bold text-white ${isCompletedOver ? "bg-black" : "bg-orange-600"} py-2 text-center`}>Completed</h3>
+                {
+                    completed.length > 0 ?
+                        completed.map((element, i) => (
+                            <Task
+                                key={element._id}
+                                element={element}
+                                taskType={element.status}
+                                onDrop={isTodoOver ? addToTodo : isCompletedOver ? addToCompleted : addToOngoing}
+                                index={i}
+                            />
+                        ))
+                        :
+                        <p className='text-gray-500 font-bold text-center my-5'>Empty List</p>
+                }
             </div>
         </div>
     );
