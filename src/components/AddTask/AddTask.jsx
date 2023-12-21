@@ -65,24 +65,16 @@ const AddTask = ({allTasks}) => {
         <div>
 
             <div className='text-center my-20'>
-                <button onClick={() => setModal(true)} className="btn btn-active bg-blue-700 text-white w-96 hover:text-blue-700">Add Task</button>
+                <button onClick={() => setModal(true)} className="btn btn-active bg-gradient-to-r from-cyan-500 to-blue-400 text-white w-96 hover:text-blue-950">Add Task</button>
             </div>
 
 
 
 
             <PureModal
-                // header="Your header"
-                // footer={
-                //     <div>
-                //         <button>Cancel</button>
-                //         <button>Save</button>
-                //     </div>
-                // }
+
                 width='500px'
                 isOpen={modal}
-                // closeButton="close"
-                // closeButtonPosition="bottom"
                 onClose={() => {
                     setModal(false);
                     return true;
@@ -134,12 +126,14 @@ const AddTask = ({allTasks}) => {
                             <option value="high">High</option>
                         </select>
                     </label>
+                    <div className='text-center'>
                     <button
                         type="submit"
                         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
                     >
                         Add Task
                     </button>
+                    </div>
                 </form>
 
 

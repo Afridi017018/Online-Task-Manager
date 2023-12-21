@@ -128,7 +128,7 @@ const NavBar = () => {
 
 
     return (
-        <div className={`${theme ? 'bg-base-300' : "bg-blue-100"} w-full`}>
+        <div className={`${theme ? 'bg-base-300' : "bg-gradient-to-r from-cyan-400 to-blue-300"} w-full`}>
             <div className="navbar container mx-auto h-24">
                 <div className="navbar-start">
                     <div className="dropdown">

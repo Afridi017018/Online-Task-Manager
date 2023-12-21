@@ -11,7 +11,7 @@ const Banner = () => {
                     <div className="max-w-md text-white">
                         <h1 className="mb-5 text-5xl font-bold">Task Manager</h1>
                         <p className="mb-5">Your Ultimate Destination for Streamlined To-Do Lists and Efficient Task Management.</p>
-                        <button onClick={()=> navigate('/dashboard/tasks')} className="btn bg-blue-700 text-white text-xl hover:bg-blue-900">Let’s Explore</button>
+                        <button onClick={()=> navigate('/dashboard/tasks')} className="btn bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xl hover:text-blue-950">Let’s Explore</button>
                     </div>
                 </div>
             </div>

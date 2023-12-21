@@ -69,8 +69,8 @@ const Tasks = ({ tasks, todo, ongoing, completed, allTasks }) => {
 
     return (
         <div className='grid grid-cols-3 px-3 gap-2'>
-            <div className='mx-auto border border-red-700 w-full' ref={addToTodoRef}>
-                <h3 className={`text-xl font-bold text-white ${isTodoOver ? "bg-black" : "bg-red-700"} py-2 text-center`}>Todo</h3>
+            <div className='mx-auto border border-purple-500 w-full' ref={addToTodoRef}>
+                <h3 className={`text-xl font-bold text-white ${isTodoOver ? "bg-black" : "bg-gradient-to-r from-purple-500 to-pink-500"} py-2 text-center`}>Todo</h3>
                 {
                     todo.length > 0 ?
                         todo.map((element, i) => (
@@ -88,7 +88,7 @@ const Tasks = ({ tasks, todo, ongoing, completed, allTasks }) => {
                 }
             </div>
             <div className='mx-auto border border-green-700 w-full' ref={addToOngoingRef}>
-                <h3 className={`text-xl font-bold text-white ${isOngoingOver ? "bg-black" : "bg-green-700"} py-2 text-center`}>Ongoing</h3>
+                <h3 className={`text-xl font-bold text-white ${isOngoingOver ? "bg-black" : "bg-gradient-to-r from-green-500 to-indigo-500"} py-2 text-center`}>Ongoing</h3>
                 {
                     ongoing.length > 0 ?
                         ongoing.map((element, i) => (
@@ -106,7 +106,7 @@ const Tasks = ({ tasks, todo, ongoing, completed, allTasks }) => {
                 }
             </div>
             <div className='mx-auto border border-orange-600 w-full' ref={addToCompletedRef}>
-                <h3 className={`text-xl font-bold text-white ${isCompletedOver ? "bg-black" : "bg-orange-600"} py-2 text-center`}>Completed</h3>
+                <h3 className={`text-xl font-bold text-white ${isCompletedOver ? "bg-black" : "bg-gradient-to-r from-orange-500 to-red-700"} py-2 text-center`}>Completed</h3>
                 {
                     completed.length > 0 ?
                         completed.map((element, i) => (
