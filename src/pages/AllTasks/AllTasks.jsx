@@ -1,11 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
+import { useContext } from 'react';
 import { useEffect } from 'react';
 import AddTask from '../../components/AddTask/AddTask';
 import Tasks from '../../components/Tasks/Tasks';
+import { AuthContext } from '../../providers/AuthProvider';
 import Loading from '../Loading/Loading';
 
 const AllTasks = () => {
+
+    const {user} = useContext(AuthContext);
 
     const [loading, setLoading] = useState(true);
 
@@ -16,7 +20,7 @@ const AllTasks = () => {
     const [completed, setCompleted] = useState([]);
 
     const allTasks = async () => {
-        const response = await fetch('http://localhost:4000/get-tasks', {
+        const response = await fetch(`http://localhost:4000/get-tasks/${user?.email}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -42,7 +46,7 @@ const AllTasks = () => {
 
     useEffect(() => {
         allTasks();
-    }, [])
+    }, [user, user?.email])
 
 
 if(loading)

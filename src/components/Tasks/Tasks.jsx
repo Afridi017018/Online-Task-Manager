@@ -80,6 +80,7 @@ const Tasks = ({ tasks, todo, ongoing, completed, allTasks }) => {
                                 taskType={element.status}
                                 onDrop={isOngoingOver ? addToOngoing : isCompletedOver ? addToCompleted : addToTodo}
                                 index={i}
+                                allTasks={allTasks}
                             />
                         ))
                         :
@@ -97,6 +98,7 @@ const Tasks = ({ tasks, todo, ongoing, completed, allTasks }) => {
                                 taskType={element.status}
                                 onDrop={isCompletedOver ? addToCompleted : isOngoingOver ? addToOngoing : addToTodo}
                                 index={i}
+                                allTasks={allTasks}
                             />
                         ))
                         :
@@ -114,6 +116,7 @@ const Tasks = ({ tasks, todo, ongoing, completed, allTasks }) => {
                                 taskType={element.status}
                                 onDrop={isTodoOver ? addToTodo : isCompletedOver ? addToCompleted : addToOngoing}
                                 index={i}
+                                allTasks={allTasks}
                             />
                         ))
                         :

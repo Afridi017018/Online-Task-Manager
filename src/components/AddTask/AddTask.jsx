@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useContext } from 'react';
 import PureModal from 'react-pure-modal';
 import 'react-pure-modal/dist/react-pure-modal.min.css';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const AddTask = ({allTasks}) => {
 
+    const {user} = useContext(AuthContext);
+   
     const [modal, setModal] = useState(false);
 
     const [title, setTitle] = useState('');
@@ -23,6 +27,7 @@ const AddTask = ({allTasks}) => {
 
         // Create a new task object
         const newTask = {
+            email: user?.email,
             title,
             description,
             deadline,
