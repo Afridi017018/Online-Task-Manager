@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import PureModal from 'react-pure-modal';
 import 'react-pure-modal/dist/react-pure-modal.min.css';
+import { toast } from 'react-toastify';
 
-const AddTask = () => {
+const AddTask = ({allTasks}) => {
 
     const [modal, setModal] = useState(false);
 
@@ -11,7 +12,7 @@ const AddTask = () => {
     const [deadline, setDeadline] = useState('');
     const [priority, setPriority] = useState('low');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         // Validation (you can add more validation logic as needed)
@@ -26,18 +27,32 @@ const AddTask = () => {
             description,
             deadline,
             priority,
+            status: "todo"
         };
 
         // Call the addTask function from the parent component
         // addTask(newTask);
 
-        console.log(newTask)
+        // console.log(newTask)
 
+        const response = await fetch('http://localhost:4000/add-task', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newTask),
+        });
+        // const result = await response.json();
+        // console.log(result)
+        allTasks();
+        toast.dismiss();
+        toast.success("Successfully Added !")
         // Clear the form fields after submitting
         setTitle('');
         setDescription('');
         setDeadline('');
         setPriority('low');
+        setModal(false);
     }
 
 
@@ -79,7 +94,7 @@ const AddTask = () => {
                             type="text"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
-                            className="form-input mt-1 block w-full border"
+                            className="form-input mt-1 block w-full border p-2"
                             required
                         />
                     </label>
@@ -88,7 +103,7 @@ const AddTask = () => {
                         <textarea
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                            className="form-textarea mt-1 block w-full border"
+                            className="form-textarea mt-1 block w-full border p-2"
                             required
                         />
                     </label>
@@ -98,7 +113,7 @@ const AddTask = () => {
                             type="date"
                             value={deadline}
                             onChange={(e) => setDeadline(e.target.value)}
-                            className="form-input mt-1 block w-full border"
+                            className="form-input mt-1 block w-full border p-2"
                             required
                         />
                     </label>
@@ -107,7 +122,7 @@ const AddTask = () => {
                         <select
                             value={priority}
                             onChange={(e) => setPriority(e.target.value)}
-                            className="form-select mt-1 block w-full border"
+                            className="form-select mt-1 block w-full border p-2"
                         >
                             <option value="low">Low</option>
                             <option value="moderate">Moderate</option>

@@ -2,21 +2,10 @@ import React, { useState } from 'react';
 import Task from '../Task/Task';
 import { useDrop } from "react-dnd";
 
-const Tasks = () => {
 
-    const [todo, setTodo] = useState([
-        { name: "Player 1" },
-        { name: "Player 2" },
-        { name: "Player 3" },
-        { name: "Player 4" },
-        { name: "Player 5" },
-    ])
+const Tasks = ({tasks, todo, ongoing, completed, allTasks}) => {
 
-    const [ongoing, setOngoing] = useState([
-        { name: "Ongoing 1" },
-    ])
-
-
+    
     const [{ isOver: isOngoingOver }, addToOngoingRef] = useDrop({
         accept: ["todo", "ongoing", "completed"],
         collect: (monitor) => ({ isOver: !!monitor.isOver() }),
@@ -38,33 +27,43 @@ const Tasks = () => {
         // setTeam((prev) => [...prev, item]);
       };
     return (
-        <div className='grid grid-cols-3 px-3'>
-            <div className='mx-auto border w-full' ref={addToTodoRef}>
-                <h3 className='text-2xl font-bold'>Todo</h3>
-                {todo.map((element, i) => (
-                    <Task
-                        key={i}
-                        element={element}
-                        taskType="todo"
-                        onDrop={addToTodo}
-                        index={i}
-                    />
-                ))}
+        <div className='grid grid-cols-3 px-3 gap-2'>
+            <div className='mx-auto border border-red-700 w-full' ref={addToTodoRef}>
+                <h3 className='text-xl font-bold text-center text-white bg-red-700 py-2'>Todo</h3>
+                {
+                    todo.length > 0 ?
+                    todo.map((element, i) => (
+                        <Task
+                            key={element._id}
+                            element={element}
+                            taskType={element.status}
+                            onDrop={addToTodo}
+                            index={i}
+                        />
+                    ))
+                    :
+                    <p className='text-gray-500 font-bold text-center my-5'>Empty List</p>
+                }
             </div>
-            <div className='mx-auto border w-full' ref={addToOngoingRef}>
-                <h3 className='text-2xl font-bold'>Ongoing</h3>
-                {ongoing.map((element, i) => (
-                    <Task
-                        key={i}
-                        element={element}
-                        taskType="ongoing"
-                        onDrop={addToOngoing}
-                        index={i}
-                    />
-                ))}
+            <div className='mx-auto border border-green-700 w-full' ref={addToOngoingRef}>
+                <h3 className='text-xl font-bold text-center text-white bg-green-700 py-2'>Ongoing</h3>
+                {
+                    ongoing.length > 0 ?
+                    ongoing.map((element, i) => (
+                        <Task
+                            key={element._id}
+                            element={element}
+                            taskType={element.status}
+                            onDrop={addToOngoing}
+                            index={i}
+                        />
+                    ))
+                    :
+                    <p className='text-gray-500 font-bold text-center my-5'>Empty List</p>
+                }
             </div>
-            <div className='mx-auto border w-full'>
-                <h3 className='text-2xl font-bold'>Completed</h3>
+            <div className='mx-auto border border-orange-600 w-full text-center'>
+                <h3 className='text-xl font-bold text-white bg-orange-600 py-2'>Completed</h3>
             </div>
         </div>
     );

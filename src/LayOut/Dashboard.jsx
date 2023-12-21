@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Outlet, useNavigate } from 'react-router-dom/dist';
+import { ToastContainer } from 'react-toastify';
 
 
 const DashBoard = () => {
@@ -27,7 +28,7 @@ const DashBoard = () => {
                             <NavLink to='/dashboard/tasks'>Tasks</NavLink>
                         </li>
 
-                        
+
 
 
                     </ul>
@@ -47,6 +48,22 @@ const DashBoard = () => {
             <div className='flex-1'>
                 <Outlet />
             </div>
+
+
+
+            <ToastContainer
+                position="top-center"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+
         </div>
     );
 };
