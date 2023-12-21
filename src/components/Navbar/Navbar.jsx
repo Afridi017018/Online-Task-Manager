@@ -15,13 +15,13 @@ const NavBar = () => {
         await logOut();
     }
 
-    const links = <div className={`flex flex-col gap-2 lg:flex-row lg:gap-10 font-medium lg:text-lg ${theme ? "text-white" : "text-green-700"}`}>
+    const links = <div className={`flex flex-col gap-2 lg:flex-row lg:gap-10 font-medium lg:text-lg ${theme ? "text-white" : "text-blue-700"}`}>
 
         <li>
             <NavLink
                 to="/"
                 className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-green-800 font-bold underline underline-offset-4" : ""
+                    isPending ? "pending" : isActive ? "text-blue-800 font-bold underline underline-offset-4" : ""
                 }
             >
                 Home
@@ -31,7 +31,7 @@ const NavBar = () => {
             <NavLink
                 to="/dashboard"
                 className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-green-800 font-bold underline underline-offset-4" : ""
+                    isPending ? "pending" : isActive ? "text-blue-800 font-bold underline underline-offset-4" : ""
                 }
             >
                 Dashboard
@@ -41,7 +41,7 @@ const NavBar = () => {
             <NavLink
                 to="/blogs"
                 className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-green-800 font-bold underline underline-offset-4" : ""
+                    isPending ? "pending" : isActive ? "text-blue-800 font-bold underline underline-offset-4" : ""
                 }
             >
                 Blogs
@@ -51,7 +51,7 @@ const NavBar = () => {
             <NavLink
                 to="/contact"
                 className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-green-800 font-bold underline underline-offset-4" : ""
+                    isPending ? "pending" : isActive ? "text-blue-800 font-bold underline underline-offset-4" : ""
                 }
             >
                 Contact Us
@@ -77,7 +77,7 @@ const NavBar = () => {
                     <NavLink
                         to="/login"
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "text-green-800 font-bold underline underline-offset-4" : ""
+                            isPending ? "pending" : isActive ? "text-blue-800 font-bold underline underline-offset-4" : ""
                         }
                     >
                         Login
@@ -87,7 +87,7 @@ const NavBar = () => {
                     <NavLink
                         to="/register"
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "text-green-800 font-bold underline underline-offset-4" : ""
+                            isPending ? "pending" : isActive ? "text-blue-800 font-bold underline underline-offset-4" : ""
                         }
                     >
                         Register
@@ -115,7 +115,7 @@ const NavBar = () => {
             <NavLink
                 to="/login"
                 className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-blue-700 font-bold underline underline-offset-4" : ""
+                    isPending ? "pending" : isActive ? "text-blue-800 font-bold underline underline-offset-4" : ""
                 }
             >
                 Login
@@ -125,7 +125,7 @@ const NavBar = () => {
             <NavLink
                 to="/register"
                 className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-blue-700 font-bold underline underline-offset-4" : ""
+                    isPending ? "pending" : isActive ? "text-blue-800 font-bold underline underline-offset-4" : ""
                 }
             >
                 Register
@@ -137,7 +137,7 @@ const NavBar = () => {
 
 
     return (
-        <div className={`${theme ? 'bg-base-300' : "bg-green-50"} w-full`}>
+        <div className={`${theme ? 'bg-base-300' : "bg-blue-100"} w-full`}>
             <div className="navbar container mx-auto h-24">
                 <div className="navbar-start">
                     <div className="dropdown">

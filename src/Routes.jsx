@@ -1,11 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "./App";
+import App from "./LayOut/App";
+import DashBoard from "./LayOut/Dashboard";
+import AllTasks from "./pages/AllTasks/AllTasks";
+
 import Blogs from "./pages/Blogs/Blogs";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import UserProfile from "./pages/UserProfile/UserProfile";
 // import AddBlog from "./pages/AddBlog/AddBlog";
 // import AllBlogs from "./pages/AllBlogs/AllBlogs";
 // import BlogDetails from "./pages/BlogDetails/BlogDetails";
@@ -73,4 +77,32 @@ export const router = createBrowserRouter([
 
         ],
     },
+
+
+
+
+    {
+        path: "dashboard",
+        element: <DashBoard />,
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: "home",
+                element: <Home />,
+            },
+            {
+                path: "user-profile",
+                element: <UserProfile />,
+            },
+            {
+                path: "tasks",
+                element: <AllTasks />,
+            },
+         
+
+
+        ]
+    },
+
+
 ]);
