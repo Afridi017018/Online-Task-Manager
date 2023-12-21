@@ -9,7 +9,7 @@ import Loading from '../Loading/Loading';
 
 const AllTasks = () => {
 
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     const [loading, setLoading] = useState(true);
 
@@ -49,18 +49,20 @@ const AllTasks = () => {
     }, [user, user?.email])
 
 
-if(loading)
-{
-    return <Loading />
-}
+    if (loading) {
+        return <Loading />
+    }
     return (
         <div>
             <div>
-                <AddTask allTasks = {allTasks} />
+                <h2 className='text-gray-600 text-2xl font-bold my-5 text-center underline underline-offset-8'>Tasks</h2>
+            </div>
+            <div>
+                <AddTask allTasks={allTasks} />
             </div>
 
             <div>
-                <Tasks tasks={tasks} todo={todo} ongoing={ongoing} completed={completed} allTasks = {allTasks} />
+                <Tasks tasks={tasks} todo={todo} ongoing={ongoing} completed={completed} allTasks={allTasks} />
             </div>
 
         </div>

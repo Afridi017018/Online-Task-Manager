@@ -10,6 +10,8 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import UserProfile from "./pages/UserProfile/UserProfile";
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 // import AddBlog from "./pages/AddBlog/AddBlog";
 // import AllBlogs from "./pages/AllBlogs/AllBlogs";
 // import BlogDetails from "./pages/BlogDetails/BlogDetails";
@@ -42,37 +44,13 @@ export const router = createBrowserRouter([
                 path: "/contact",
                 element: <ContactUs/>,
               },
-            // {
-            //     path: "/all-blogs",
-            //     element: <AllBlogs />,
-            // },
-            // {
-            //     path: "/blog-details/:id",
-            //     element: <BlogDetails />,
-            // },
-            // {
-            //     path: "/wishlist",
-            //     element: <PrivateRoute><WishList /></PrivateRoute>,
-            // },
-            // {
-            //     path: "/featured",
-            //     element: <Featured />,
-            // },
-            // {
-            //     path: "/add-blog",
-            //     element: <PrivateRoute><AddBlog /></PrivateRoute>,
-            // },
-            // {
-            //     path: "/update-blog/:id",
-            //     element: <PrivateRoute><UpdateBlog /></PrivateRoute>,
-            // },
             {
                 path: "/login",
-                element: <Login />,
+                element: <PublicRoute><Login /></PublicRoute>,
             },
             {
                 path: "/register",
-                element: <Register />,
+                element: <PublicRoute><Register /></PublicRoute>,
             },
 
         ],
@@ -83,7 +61,7 @@ export const router = createBrowserRouter([
 
     {
         path: "dashboard",
-        element: <DashBoard />,
+        element: <PrivateRoute><DashBoard /></PrivateRoute>,
         errorElement: <ErrorPage />,
         children: [
             {
@@ -92,11 +70,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: "user-profile",
-                element: <UserProfile />,
+                element: <PrivateRoute><UserProfile /></PrivateRoute>,
             },
             {
                 path: "tasks",
-                element: <AllTasks />,
+                element: <PrivateRoute><AllTasks /></PrivateRoute>,
             },
          
 

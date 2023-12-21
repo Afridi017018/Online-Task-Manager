@@ -3,7 +3,7 @@ import React from 'react';
 const Loading = () => {
     return (
         <div className='relative'>
-            <div className='h-[555px] bg-slate-300 opacity-40 -z-10'>
+            <div className='h-[555px] opacity-40 -z-10'>
                 
                 </div>
                 <div className='text-center absolute top-1/2 right-1/2 text-gray-700 z-10'>

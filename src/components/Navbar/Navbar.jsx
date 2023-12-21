@@ -13,6 +13,7 @@ const NavBar = () => {
     const theme = false
     const handleLogOut = async () => {
         await logOut();
+        navigate('/')
     }
 
     const links = <div className={`flex flex-col gap-2 lg:flex-row lg:gap-10 font-medium lg:text-lg ${theme ? "text-white" : "text-blue-700"}`}>
@@ -29,7 +30,7 @@ const NavBar = () => {
         </li>
         <li>
             <NavLink
-                to="/dashboard"
+                to="/dashboard/tasks"
                 className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-blue-800 font-bold underline underline-offset-4" : ""
                 }
@@ -58,16 +59,6 @@ const NavBar = () => {
             </NavLink>
         </li>
 
-        {/* <li>
-            <NavLink
-                to="/add-blog"
-                className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-green-800 font-bold underline underline-offset-4" : ""
-                }
-            >
-                Add Blog
-            </NavLink>
-        </li> */}
 
 
         {
@@ -179,7 +170,7 @@ const NavBar = () => {
                                         <img className='h-6 w-6 lg:h-9 lg:w-9 rounded-full' src={user.photoURL} alt="" />
                                     </div>
                                 </li>
-                                <li className='flex items-center'>
+                                <li onClick={()=> navigate('/dashboard/user-profile')} className='flex items-center cursor-pointer'>
                                     {user.displayName}
                                 </li>
                                 <li onClick={handleLogOut} className='hidden lg:flex items-center cursor-pointer font-bold text-red-700'>
