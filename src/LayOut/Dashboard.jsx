@@ -37,7 +37,7 @@ const DashBoard = () => {
 
 
                 <div>
-                    <button onClick={() => logOut()} className='mx-8 bg-red-500 text-white px-2 py-1 rounded-lg mt-3 mb-5 lg:mb-0'>Logout</button>
+                    <button onClick={() => logOut()} className='mx-8 bg-red-500 text-white px-2 py-1 rounded-lg mt-3 mb-5 lg:mb-0 text-sm'>Logout</button>
                 </div>
 
 
