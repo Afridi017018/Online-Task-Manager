@@ -20,7 +20,7 @@ const AllTasks = () => {
     const [completed, setCompleted] = useState([]);
 
     const allTasks = async () => {
-        const response = await fetch(`http://localhost:4000/get-tasks/${user?.email}`, {
+        const response = await fetch(`https://task-management-system23.vercel.app/get-tasks/${user?.email}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

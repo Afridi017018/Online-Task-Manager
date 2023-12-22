@@ -48,7 +48,7 @@ const Task = ({ element, taskType, index, onDrop, allTasks }) => {
         }).then(async (result) => {
             if (result.isConfirmed) {
 
-                const response = await fetch(`http://localhost:4000/delete-task/${element._id}`, {
+                const response = await fetch(`https://task-management-system23.vercel.app/delete-task/${element._id}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ const Task = ({ element, taskType, index, onDrop, allTasks }) => {
         };
 
 
-        const response = await fetch('http://localhost:4000/update-task', {
+        const response = await fetch('https://task-management-system23.vercel.app/update-task', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ const Task = ({ element, taskType, index, onDrop, allTasks }) => {
 
     const handleGetSIngleTask = async () => {
 
-        const response = await fetch(`http://localhost:4000/get-single-task/${element._id}`, {
+        const response = await fetch(`https://task-management-system23.vercel.app/get-single-task/${element._id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

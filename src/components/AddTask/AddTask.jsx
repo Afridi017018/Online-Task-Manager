@@ -40,7 +40,7 @@ const AddTask = ({allTasks}) => {
 
         // console.log(newTask)
 
-        const response = await fetch('http://localhost:4000/add-task', {
+        const response = await fetch('https://task-management-system23.vercel.app/add-task', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

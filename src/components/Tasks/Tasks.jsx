@@ -24,7 +24,7 @@ const Tasks = ({ tasks, todo, ongoing, completed, allTasks }) => {
 
     const addToTodo = async (item) => {
 
-        const response = await fetch('http://localhost:4000/update-task-status', {
+        const response = await fetch('https://task-management-system23.vercel.app/update-task-status', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ const Tasks = ({ tasks, todo, ongoing, completed, allTasks }) => {
 
     };
     const addToOngoing = async (item) => {
-        const response = await fetch('http://localhost:4000/update-task-status', {
+        const response = await fetch('https://task-management-system23.vercel.app/update-task-status', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ const Tasks = ({ tasks, todo, ongoing, completed, allTasks }) => {
 
 
     const addToCompleted = async (item) => {
-        const response = await fetch('http://localhost:4000/update-task-status', {
+        const response = await fetch('https://task-management-system23.vercel.app/update-task-status', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

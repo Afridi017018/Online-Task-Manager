@@ -5,7 +5,7 @@ const Banner = () => {
     const navigate = useNavigate();
     return (
         <div>
-            <div className="hero min-h-[558px]" style={{ backgroundImage: 'url(https://img.freepik.com/free-vector/people-calendar-time-management-concept_23-2148822826.jpg?w=740&t=st=1703089931~exp=1703090531~hmac=de1369c49c7ae0610632fdd6f3f3ac5c912d68c32d6156a33ef9e637420944bf)' }}>
+            <div className="hero min-h-[558px]" style={{ backgroundImage: 'url(https://img.freepik.com/premium-vector/planning-flat-design-concept-illustration-people-characters_9209-5421.jpg?w=740)' }}>
                 <div className="hero-overlay bg-opacity-80"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md text-white">
